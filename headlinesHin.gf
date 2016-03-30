@@ -62,7 +62,7 @@ concrete headlinesHin of headlines = {
 		Conference = mkInvObjNP "सम्मेलन" Masc; --sammelan
 		Car = mkInvObjNP "गाड़ी" Fem; --gharí
 		House = mkInvObjNP "घर" Masc; --ghar
-		Agreement = mkObjNP "समझौता" "समझौते पर" Masc; --samajhauta, samajhaute par
+		Agreement = mkObjNP "समझौता" "समझौते" Masc; --samajhauta, samajhaute par
 		
 		ThisMorning = {s = "आज सुबह"; t = Pf; sc = Erg}; --áj subah
 		ThisEvening = {s = "आज शाम"; t = Fut; sc = Abs}; --áj xám

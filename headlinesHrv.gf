@@ -43,7 +43,7 @@ concrete headlinesHrv of headlines = {
 		Talk = mkV "razgovara";
 		Support = mkV "podrža";
 		Receive = mkV "primi";
-		Criticize = mkV "kritizira";
+		Criticize = {s = table {Pf => "je kritizirao"; Fut => "bi mogao kritizirati"}};
 		Sign = mkV "potpisa";
 		Attend = mkV "prisustvova";
 		
