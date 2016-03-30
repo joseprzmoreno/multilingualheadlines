@@ -176,6 +176,10 @@ function mostrarInfo(info) {
 		}
 		
 		var textoMod = textoOrig.substring(0,1).toUpperCase() + textoOrig.substring(1,textoOrig.length);
+		var letra = "'";
+		var re = new RegExp(letra, "g");
+		textoMod = textoMod.replace(re,"&rsquo;");
+		textoOrig = textoOrig.replace(re,"&rsquo;");
 		
 		if (orden[i]==9) {
 		respuesta += "<div class='textoOtr' id='textoHeb'>" + textoMod;
