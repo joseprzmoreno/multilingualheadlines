@@ -98,6 +98,9 @@ a {
 	margin-top:5px;
 	margin-bottom:2px;
 }
+.altavoz {
+	cursor: pointer;
+}
 </style>
 <meta charset="UTF-8">
 <title>Multilingual headlines Generator in 21 languages</title>
@@ -107,6 +110,8 @@ a {
 <link href='https://fonts.googleapis.com/css?family=Raleway&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script>
+var synth = window.speechSynthesis;
+var voices = [];
 document.addEventListener("keydown", function(event){
 	if (event.keyCode=='70') {
 		getInfo();
@@ -172,27 +177,71 @@ function mostrarInfo(info) {
 		
 		var textoMod = textoOrig.substring(0,1).toUpperCase() + textoOrig.substring(1,textoOrig.length);
 		
+		if (orden[i]==9) {
+		respuesta += "<div class='textoOtr' id='textoHeb'>" + textoMod;
+		}
+		else if (orden[i]==0) {
+		respuesta += "<div class='textoOtr' id='textoAra'>" + textoMod;
+		}
+		else if (orden[i]==3) {
+		respuesta += "<div class='textoOtr' id='textoChi'>" + textoMod.replace(/\s+/g, '');
+		}
+		else {
+		respuesta += "<div class='textoOtr'>" + textoMod;
+		}
+		
+		switch (orden[i]) {
+		case 17:
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;es-ES&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 13: //por
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;pt-BR&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 5: //fra
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;fr-FR&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 12: //ita
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;it-IT&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 4: //eng
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;en-US&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 6: //ger
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;de-DE&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 16: //rus
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;ru-RU&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 10: //hin
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;hi-IN&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		case 3: //chi
+			respuesta += "&nbsp;<img src='https://upload.wikimedia.org/wikipedia/commons/3/3c/Speakerlink.svg' class='altavoz' onclick='decir(&quot;zh-CN&quot;, &quot;" + textoOrig + "&quot;)'></img>";
+		break;
+		
+		}
+				
+		respuesta += "</div>";
+		
 		if (orden[i]==16) { //ruso
-			respuesta += "<div id='textoGri'>"+textoMod+"</div><div class='transcripc'>" + transcripcionRus + "</div>";
+			respuesta += "<div class='transcripc'>" + transcripcionRus + "</div>";
 		}
 		else if (orden[i]==8) { //griego
-			respuesta += "<div id='textoGri'>"+textoMod+"</div><div class='transcripc'>" + transcripcionGri + "</div>";
+			respuesta += "<div class='transcripc'>" + transcripcionGri + "</div>";
 		}
 		else if (orden[i]==9) { //hebreo
-			respuesta += "<div id='textoHeb'>"+textoMod+"</div><div class='transcripc'>" + transcripcionHeb + "</div>";
+			respuesta += "<div class='transcripc'>" + transcripcionHeb + "</div>";
 		}
 		else if (orden[i]==0) { //arabe
-			respuesta += "<div id='textoAra'>"+textoMod+"</div><div class='transcripc'>" + transcripcionAra + "</div>";
+			respuesta += "<div class='transcripc'>" + transcripcionAra + "</div>";
 		}
 		else if (orden[i]==10) { //hindi
-			respuesta += "<div id='textoHin'>"+textoMod+"</div><div class='transcripc'>" + transcripcionHin + "</div>";
-
+			respuesta += "<div class='transcripc'>" + transcripcionHin + "</div>";
 		}
 		else if (orden[i]==3) { //chino
-			//remove spaces from Chinese translation
-			respuesta += "<div id='textoChi'>" + textoMod.replace(/\s+/g, '') + "</div><div class='transcripc'>" + transcripcionChi + "</div>";
+			respuesta += "<div class='transcripc'>" + transcripcionChi + "</div>";
 		}
-		else{respuesta += textoMod;}
+			
 		respuesta += "</div></div>";
 		if (i%3==2 || i==orden.length-1) {respuesta += "</div>";}
 	}
@@ -265,6 +314,19 @@ function transcribirChi(txt) {
 		txt = txt.replace(re,equivChi[i]);
 	}
 	return txt;
+}
+
+function decir(idioma, txt) {
+	 voices = synth.getVoices();
+     var u = new SpeechSynthesisUtterance(txt);
+     u.rate = 1.3;
+	 for (i=0;i<voices.length;i++) {
+		if (voices[i].lang == idioma) {
+			u.voice = voices[i];
+			break;
+		}
+	 }
+     synth.speak(u);
 }
 
 </script>
