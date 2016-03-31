@@ -55,7 +55,7 @@ concrete headlinesHin of headlines = {
 		Support = mkInvV "का समर्थन किया" "का समर्थन करेगा"; --ká samartan kiyá, ká samartan karegá
 		Receive = mkInvV "का स्वागत किया" "का स्वागत करेगा"; --ká svágat kiyá, ká svágat karegá
 		Criticize = mkInvV "की आलोचना की" "की आलोचना कर सख्ता है"; --kí alochná kí, kí alochná kar sakhtá hai
-		Sign = mkInvV "हस्ताक्षर किए" "हस्ताक्षर करने"; --hastashkar kie, hastashkar karegá
+		Sign = mkInvV "हस्ताक्षर किए" "हस्ताक्षर करेगा"; --hastashkar kie, hastashkar karegá
 		Attend = mkV "गया" "गई" "जाएगा" "जाएगी"; --gayá gaí jaegá jaegí
 		
 		Exhibition = mkInvObjNP "प्रदर्शनी" Fem; --pradarxaní
