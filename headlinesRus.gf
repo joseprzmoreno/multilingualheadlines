@@ -1,9 +1,5 @@
 concrete headlinesRus of headlines = {
-<<<<<<< HEAD
 	lincat 
-=======
-	lincat
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 		Headline = Str;
 		PersNP = {s : PersNPCase => Str};
 		ObjNP, DocNP = {s : Str};
@@ -31,7 +27,6 @@ concrete headlinesRus of headlines = {
 		headlineGoTimePlace p v o ta pa = p.s ! Nom ++ v.s ! ta.t ++ o.s ! Loc ++ ta.s ++ pa.s;
 		headlineWrite p v o h = p.s ! Nom ++ v.s ! h.t ++ o.s;
 		headlineWriteTime p v o ta = p.s ! Nom ++ v.s ! ta.t ++ o.s ++ ta.s;
-<<<<<<< HEAD
 		
 		King = {s = table {Nom => "король"; Acc => "короля"; Comit => "с королем"}};	
 		President = {s = table {Nom => "президент"; Acc => "президента"; Comit => "с президентом"}};	
@@ -41,17 +36,6 @@ concrete headlinesRus of headlines = {
 		Singer = {s = table {Nom => "певец"; Acc => "певца"; Comit => "с певцом"}};	
 		Actor = {s = table {Nom => "актер"; Acc => "актера"; Comit => "с актером"}};	
 		
-=======
-
-		King = {s = table {Nom => "король"; Acc => "короля"; Comit => "с королем"}};
-		President = {s = table {Nom => "президент"; Acc => "президента"; Comit => "с президентом"}};
-		LeaderSP = {s = table {Nom => "лидер социалистической партии"; Acc => "лидера социалистической партии"; Comit => "с лидером социалистической партии"}};
-		MinisterFA = {s = table {Nom => "министр иностранных дел"; Acc => "министра иностранных дел"; Comit => "с министром иностранных дел"}};
-		Judge = {s = table {Nom => "судья"; Acc => "судью"; Comit => "с судьей"}};
-		Singer = {s = table {Nom => "певец"; Acc => "певца"; Comit => "с певцом"}};
-		Actor = {s = table {Nom => "актер"; Acc => "актера"; Comit => "с актером"}};
-
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 		Inaugurate = {s = table {Pf => "открыл"; Fut => "откроет"}};
 		Buy = {s = table {Pf => "купил"; Fut => "купит"}};
 		Die = {s = "умер"};
@@ -62,21 +46,13 @@ concrete headlinesRus of headlines = {
 		Criticize = {s = table {Pf => "критиковал"; Fut => "мог бы критиковать"}};
 		Sign = {s = table {Pf => "подписал"; Fut => "подпишет"}};
 		Attend = {s = table {Pf => "присутствовал"; Fut => "будет присутствовать"}};
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 		Exhibition = {s = table {Nom_ => "выставка"; Acc_ => "выставку"; Loc => "на выставке"}};
 		Conference = {s = table {Nom_ => "конференция"; Acc_ => "конференцию"; Dat => "на конференции"}};
 		Car = {s = "машину"};
 		House = {s = "дом"};
 		Agreement = {s = "соглашение"};
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 		ThisMorning = {s = "сегодня утром"; t = Pf};
 		ThisEvening = {s = "сегодня вечером"; t = Fut};
 		TodayBefore = {s = "сегодня"; t = Pf};
@@ -90,11 +66,7 @@ concrete headlinesRus of headlines = {
 		ThreeDaysAgo = {s = "три дня назад"; t = Pf};
 		InThreeDays = {s = "через три дня"; t = Fut};
 		AMomentAgo = {s = "момент назад"; t = Pf};
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 		MonBef = {s = "в понедельник"; t = Pf};
 		TueBef = {s = "во вторник"; t = Pf};
 		WedBef = {s = "в среду"; t = Pf};
@@ -102,11 +74,7 @@ concrete headlinesRus of headlines = {
 		FriBef = {s = "в пятницу"; t = Pf};
 		SatBef = {s = "в субботу"; t = Pf};
 		SunBef = {s = "в воскресенье"; t = Pf};
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 		MonAft = {s = "в понедельник"; t = Fut};
 		TueAft = {s = "во вторник"; t = Fut};
 		WedAft = {s = "в среду"; t = Fut};
@@ -114,19 +82,11 @@ concrete headlinesRus of headlines = {
 		FriAft = {s = "в пятницу"; t = Fut};
 		SatAft = {s = "в субботу"; t = Fut};
 		SunAft = {s = "в воскресенье"; t = Fut};
-<<<<<<< HEAD
 		
 		HiddenPas = {t = Pf};
 		HiddenPf = {t = Pf};
 		HiddenFut = {t = Fut};
 		
-=======
-
-		HiddenPas = {t = Pf};
-		HiddenPf = {t = Pf};
-		HiddenFut = {t = Fut};
-
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 		inMadrid = {s = "в Мадриде"};
 		inBarcelona = {s = "в Барселоне"};
 		atHotel = {s = "в гостинице"};
@@ -135,11 +95,7 @@ concrete headlinesRus of headlines = {
 		inFrance = {s = "во Франции"};
 		inChina = {s = "в Китае"};
 		inUS = {s = "в Соединенных Штатах"};
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> ecb10dac3b52cf4ae5009a592a451c80f23738c8
 	param
 		Time = Pf | Fut;
 		PersNPCase = Nom | Acc | Comit;
