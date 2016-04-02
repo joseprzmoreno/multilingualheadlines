@@ -151,8 +151,8 @@ document.addEventListener("keydown", function(event){
 function getInfo() {
 $.ajax({
   
-  //url: "http://cloud.grammaticalframework.org/grammars/headlines.pgf",
-  url: "http://localhost:41296/headlines.pgf",
+  url: "http://cloud.grammaticalframework.org/grammars/headlines.pgf",
+  //url: "http://localhost:41296/headlines.pgf",
   type: "get",
   data:{command:"random"},
   success: function(response) {
