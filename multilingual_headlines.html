@@ -151,8 +151,8 @@ document.addEventListener("keydown", function(event){
 function getInfo() {
 $.ajax({
   
-  url: "http://cloud.grammaticalframework.org/grammars/headlines.pgf",
-  //url: "http://localhost:41296/headlines.pgf",
+  //url: "http://cloud.grammaticalframework.org/grammars/headlines.pgf",
+  url: "http://localhost:41296/headlines.pgf",
   type: "get",
   data:{command:"random"},
   success: function(response) {
@@ -269,7 +269,7 @@ function showInfo(info) {
 		}
 		else if (langs[order[i]]=="Chinese") {
 			var romanizationChi = romanizeChi(retrievedLin);
-			answer += "<div class='romanization'>" + romanizationHin + "</div>";
+			answer += "<div class='romanization'>" + romanizationChi + "</div>";
 		}
 			
 		answer += "</div></div>";
