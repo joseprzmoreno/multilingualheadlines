@@ -92,7 +92,7 @@ lin
     MonAft  = {s = "på måndag"; t = Fut};
     TueAft  = {s = "på tisdag"; t = Fut};
     WedAft  = {s = "på onsdag"; t = Fut};
-    ThuAft  = {s = "på torsag"; t = Fut};
+    ThuAft  = {s = "på torsdag"; t = Fut};
     FriAft  = {s = "på fredag"; t = Fut};
     SatAft  = {s = "på lördag"; t = Fut};
     SunAft  = {s = "på söndag"; t = Fut};
@@ -103,7 +103,7 @@ lin
     inBarcelona  = {s = "i Barcelona"};
     atHotel  = {s = "på ett hotel"};
     inCityCenter  = {s = "i centrum"};
-    atNationalPalace  = {s = "at the National Palace"};
+    atNationalPalace  = {s = "på National Palace"};
     inFrance  = {s = "i Frankrike"};
     inChina  = {s = "i Kina"};
     inUS  = {s = "i USA"};
