@@ -30,34 +30,34 @@ concrete headlinesEng of headlines = {
 		headlineWrite p v o h = p.s ! NomAcc ++ v.s ! h.t ++ o.s;
 		headlineWriteTime p v o ta = p.s ! NomAcc ++ v.s ! ta.t ++ o.s ++ ta.s;
 		
-		King = mkPersNP "king";
-		President = mkPersNP "prime minister";
-		LeaderSP = mkPersNP "leader of the socialist party";
-		MinisterFA = mkPersNP "minister of foreign affairs";
-		Judge = mkPersNP "judge";
-		Singer = mkPersNP "singer";
-		Actor = mkPersNP "actor";	
+		King = mkPersNP "King";
+		President = mkPersNP "Prime minister";
+		LeaderSP = mkPersNP "Socialist Party Leader";
+		MinisterFA = mkPersNP "Minister of Foreign Affairs";
+		Judge = mkPersNP "Judge";
+		Singer = mkPersNP "Singer";
+		Actor = mkPersNP "Actor";	
 		
 		Inaugurate = mkVowelV "inaugurate"| mkConsV "open";
-		Buy = {s = table {Pas => "bought"; Pf => "has bought"; Fut => "will buy"}};
-		Die = {s = "has died" | "has passed away"};
-		Meet = {s = table {Pas => "met"; Pf => "has met"; Fut => "will meet"}; rc = Comit};
-		Talk = {s = table {Pas => "talked"; Pf => "has talked"; Fut => "will talk"}; rc = Dat};
+		Buy = {s = table {Pas => "bought"; Pres => "buys"; Fut => "to buy"}}; --previous version: will buy; 'to' is more common in headlines
+		Die = {s = "dies"};
+		Meet = {s = table {Pas => "met"; Pres => "meets"; Fut => "to meet"}; rc = Comit};
+		Talk = {s = table {Pas => "talked"; Pres => "talks"; Fut => "to talk"}; rc = Dat};
 		Support = mkConsV "support";
 		Receive = mkVowelV "receive";
-		Criticize = {s = table {Pas => "criticized"; Pf => "has criticized"; Fut => "might criticize"}; rc = Dat};
+		Criticize = {s = table {Pas => "criticized"; Pres => "criticizes"; Fut => "might criticize"}};
 		Sign = mkConsV "sign";
 		Attend = mkConsV "attend";
 		
-		Exhibition = {s = table {NomAcc_ => "the exhibition"; Dir => "to the exhibition"}};
-		Conference = {s = table {NomAcc_ => "the conference"; Dir => "to the conference"}};
-		Car = {s = "a car"};
-		House = {s = "a house"};
-		Agreement = {s = "the agreement"};
+		Exhibition = {s = table {NomAcc_ => "exhibition"; Dir => "to exhibition"}}; --dir not used (attend is transitive in English)
+		Conference = {s = table {NomAcc_ => "conference"; Dir => "to conference"}};
+		Car = {s = "car"}; --car and house are indefinite in other grammars
+		House = {s = "house"};
+		Agreement = {s = "agreement"};
 		
-		ThisMorning = {s = "this morning"; t = Pf};
+		ThisMorning = {s = "this morning"; t = Pres};
 		ThisEvening = {s = "this evening"; t = Fut};
-		TodayBefore = {s = "today"; t = Pf};
+		TodayBefore = {s = "today"; t = Pres};
 		TodayAfter = {s = "today"; t = Fut};
 		Tomorrow = {s = "tomorrow"; t = Fut};
 		Yesterday = {s = "yesterday"; t = Pas};
@@ -67,7 +67,7 @@ concrete headlinesEng of headlines = {
 		DayAfterTom = {s = "in two days"; t = Fut};
 		ThreeDaysAgo = {s = "three days ago"; t = Pas};
 		InThreeDays = {s = "in three days"; t = Fut};
-		AMomentAgo = {s = "a moment ago"; t = Pf};
+		AMomentAgo = {s = "a moment ago"; t = Pres};
 		
 		MonBef = {s = "on Monday"; t = Pas};
 		TueBef = {s = "on Tuesday"; t = Pas};
@@ -85,28 +85,28 @@ concrete headlinesEng of headlines = {
 		SatAft = {s = "on Saturday"; t = Fut};
 		SunAft = {s = "on Sunday"; t = Fut};
 		
-		HiddenPas = {t = Pas};
-		HiddenPf = {t = Pf};
+		HiddenPas = {t = Pres}; --Usually translated as past in the other grammars
+		HiddenPf = {t = Pres}; --Usually translated as present perfect or past in the other grammars (English uses present in these cases)
 		HiddenFut = {t = Fut};
 		
 		inMadrid = {s = "in Madrid"};
 		inBarcelona = {s = "in Barcelona"};
-		atHotel = {s = "at a hotel"};
+		atHotel = {s = "at hotel"};
 		inCityCenter = {s = "in the city center" | "downtown"};
-		atNationalPalace = {s = "at the National Palace"};
+		atNationalPalace = {s = "at National Palace"};
 		inFrance = {s = "in France"};
 		inChina = {s = "in China"};
 		inUS = {s = "in the United States" | "in the US"};
 		
 	param
-		Time = Pas | Pf | Fut;
+		Time = Pas | Pres | Fut;
 		PersNPCase = NomAcc | Dat | Comit;
 		PlaceNPCase = NomAcc_ | Dir;
 		
 	oper
 		PersNPType : Type = {s : PersNPCase => Str};
-		mkPersNP: Str -> PersNPType = \w -> {s = table {NomAcc => "the"++w; Dat => "to the"++w; Comit => "with the"++w}};
+		mkPersNP: Str -> PersNPType = \w -> {s = table {NomAcc => w; Dat => "to"++w; Comit => "with"++w}}; --removed 'the' because of headline style
 		VType : Type = {s : Time => Str};
-		mkConsV : Str -> VType = \v -> {s = table {Pas => v+"ed"; Pf => "has"++v+"ed"; Fut => "will"++v}};
-		mkVowelV : Str -> VType = \v -> {s = table {Pas => v+"d"; Pf => "has"++v+"d"; Fut => "will"++v}};
+		mkConsV : Str -> VType = \v -> {s = table {Pas => v+"ed"; Pres => v+"s"; Fut => "to"++v}};
+		mkVowelV : Str -> VType = \v -> {s = table {Pas => v+"d"; Pres => v+"s"; Fut => "to"++v}};
 }

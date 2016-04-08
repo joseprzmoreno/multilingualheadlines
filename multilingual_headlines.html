@@ -133,6 +133,7 @@ a {
 
 </style>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Multilingual headlines generator made with Grammatical Framewok</title>
 <link href='https://fonts.googleapis.com/css?family=News+Cycle:700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
@@ -151,8 +152,9 @@ document.addEventListener("keydown", function(event){
 function getInfo() {
 $.ajax({
   
-  //url: "http://cloud.grammaticalframework.org/grammars/headlines.pgf",
-  url: "http://localhost:41296/headlines.pgf",
+  //comment next line and uncomment following line to use in local server
+  url: "http://cloud.grammaticalframework.org/grammars/headlines.pgf",
+  //url: "http://localhost:41296/headlines.pgf",
   type: "get",
   data:{command:"random"},
   success: function(response) {
